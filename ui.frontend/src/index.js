@@ -14,13 +14,6 @@
  ~ limitations under the License.
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-// Use polyfills for modern language features
-// The imports and dependencies can be removed if only modern browsers should be
-// supported
-import 'react-app-polyfill/stable';
-import 'react-app-polyfill/ie9';
-import 'custom-event-polyfill';
-
 import { Constants, ModelManager } from '@adobe/aem-spa-page-model-manager';
 import { createBrowserHistory } from 'history';
 import React from 'react';
@@ -30,9 +23,12 @@ import App from './App';
 import './components/import-components';
 import './index.scss';
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
   ModelManager.initialize().then(pageModel => {
     const history = createBrowserHistory();
+      console.log('bbbbccccbbbb');
     render(
       <Router history={history}>
         <App
