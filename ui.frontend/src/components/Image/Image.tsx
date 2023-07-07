@@ -7,19 +7,21 @@ export const ImageEditConfig = {
 
     emptyLabel: 'Image',
 
-    isEmpty: function(props) {
+    isEmpty: function(props:any) {
         return !props || !props.src || props.src.trim().length < 1;
     }
 };
 
 export default class Image extends Component {
 
+    props:any;
+
     get content() {
         return <img
-                className="Image-src"
-                src={this.props.src}
-                alt={this.props.alt}
-                title={this.props.title ? this.props.title : this.props.alt} />;
+            className="Image-src"
+            src={this.props.src}
+            alt={this.props.alt}
+            title={this.props.title ? this.props.title : this.props.alt} />;
     }
 
     render() {
@@ -28,9 +30,9 @@ export default class Image extends Component {
         }
 
         return (
-                <div className="Image">
-                    {this.content}
-                </div>
+            <div className="Image">
+                {this.content}
+            </div>
         );
     }
 }

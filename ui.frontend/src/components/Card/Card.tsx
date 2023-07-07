@@ -9,19 +9,21 @@ export const CardEditConfig = {
 
     emptyLabel: 'Card',
 
-    isEmpty: function(props) {
+    isEmpty: function(props:any) {
         return !props || !props.src || props.src.trim().length < 1;
     }
 };
 
 export default class Card extends Component {
 
+    props:any;
+
     get ctaButton() {
         if(this.props && this.props.ctaLinkURL && this.props.ctaText) {
             return (
                 <div className="Card__action-container">
                     <Link to={this.props.ctaLinkURL} title={this.props.title}
-                        className="Card__action-link">
+                          className="Card__action-link">
                         {this.props.ctaText}
                     </Link>
                 </div>
@@ -66,9 +68,9 @@ export default class Card extends Component {
         }
 
         return (<div className="Card">
-                {this.imageContent}
-                {this.bodyContent}
-            </div>);
+            {this.imageContent}
+            {this.bodyContent}
+        </div>);
     }
 }
 

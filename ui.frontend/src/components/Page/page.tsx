@@ -15,26 +15,27 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 import {
-  MapTo,
-  Page,
-  withComponentMappingContext
+    MapTo,
+    Page,
 } from '@adobe/aem-react-editable-components';
 import { withRoute } from '../RouteHelper/RouteHelper';
-
-require('./Page.css');
+import  './Page.css';
+// require('./Page.css');
 
 // This component is a variant of a Page component mapped to the
 // "wknd-spa-react/components/page" resource type. For now, the rendering is
 // the same as the RootPage; this is more for illustration purposes
-class AppPage extends Page {
-  get containerProps() {
-    let attrs = super.containerProps;
-    attrs.className =
-      (attrs.className || '') + ' page ' + (this.props.cssClassNames || '');
-    return attrs;
-  }
+class AppPage extends Page<any,any> {
+    get containerProps() {
+        // @ts-ignore
+        let attrs = super.containerProps;
+        attrs.className =
+            (attrs.className || '') + ' page ' + (this.props.cssClassNames || '');
+        return attrs;
+    }
 }
 
 export default MapTo('wknd-spa-react/components/page')(
-  withComponentMappingContext(withRoute(AppPage))
+    // @ts-ignore
+    withRoute(AppPage)
 );

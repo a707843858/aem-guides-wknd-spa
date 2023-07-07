@@ -12,7 +12,7 @@
   "dependencies": {
     "@adobe/aem-react-editable-components": "^1.0.0",
     "@adobe/aem-spa-component-mapping": "^1.0.0",
-    "@adobe/aem-spa-page-model-manager": "^1.0.0",
+    "@adobe/aem-spa-page-model-manager": "^1.5.0",
     "dompurify": "^3.0.4",
     "history": "^4.10.1",
     "normalize-scss": "^7.0.1",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.1.6",
     "aem-clientlib-generator": "^1.5.0",
     "aemsync": "^4.0.0",

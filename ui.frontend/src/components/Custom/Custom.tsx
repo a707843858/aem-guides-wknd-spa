@@ -5,17 +5,20 @@ export const CustomEditConfig = {
 
     emptyLabel: 'Custom',
 
-    isEmpty: function(props) {
+    isEmpty: function(props:any) {
         return !props || !props.message || props.message.trim().length < 1;
     }
 };
 
 export default class Custom extends Component {
 
+    props:any;
+
     render() {
         if(CustomEditConfig.isEmpty(this.props)) {
             return null;
         }
+
 
         return (
             <div className="CustomComponent">

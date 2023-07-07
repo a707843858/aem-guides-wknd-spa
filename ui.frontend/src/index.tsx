@@ -14,33 +14,32 @@
  ~ limitations under the License.
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-import { Constants, ModelManager } from '@adobe/aem-spa-page-model-manager';
-import { createBrowserHistory } from 'history';
+import {Constants, ModelManager} from '@adobe/aem-spa-page-model-manager';
+import {createBrowserHistory} from 'history';
 import React from 'react';
-import { render } from 'react-dom';
-import { Router } from 'react-router-dom';
-import App from './App';
+import {render} from 'react-dom';
+import {Router} from 'react-router-dom';
+import AApp from './App';
 import './components/import-components';
 import './index.scss';
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  ModelManager.initialize().then(pageModel => {
-    const history = createBrowserHistory();
-      console.log('bbbbccccbbbb');
-    render(
-      <Router history={history}>
-        <App
-          history={history}
-          cqChildren={pageModel[Constants.CHILDREN_PROP]}
-          cqItems={pageModel[Constants.ITEMS_PROP]}
-          cqItemsOrder={pageModel[Constants.ITEMS_ORDER_PROP]}
-          cqPath={pageModel[Constants.PATH_PROP]}
-          locationPathname={window.location.pathname}
-        />
-      </Router>,
-      document.getElementById('spa-root')
-    );
-  });
+    ModelManager.initialize().then(pageModel => {
+        const history = createBrowserHistory();
+        console.log('mmmmmmmmmmmm');
+        render(
+            <Router history={history}>
+                <AApp
+                    history={history}
+                    cqChildren={pageModel[Constants.CHILDREN_PROP]}
+                    cqItems={pageModel[Constants.ITEMS_PROP]}
+                    cqItemsOrder={pageModel[Constants.ITEMS_ORDER_PROP]}
+                    cqPath={pageModel[Constants.PATH_PROP]}
+                    locationPathname={window.location.pathname}
+                />
+            </Router>,
+            document.getElementById('spa-root')
+        );
+    });
 });

@@ -28,27 +28,32 @@ import { Route } from 'react-router-dom';
  * @param {string} [extension=html]             - extension used to identify a route amongst the tree of resource URLs
  * @returns {CompositeRoute}
  */
-export const withRoute = (WrappedComponent, extension) => {
-  return class CompositeRoute extends Component {
-    render() {
-      let routePath = this.props.cqPath;
-      if (!routePath) {
-        return <WrappedComponent {...this.props} />;
-      }
+export const withRoute = (WrappedComponent:React.Component, extension?:string) => {
+    return class CompositeRoute extends Component {
 
-      extension = extension || 'html';
+        props:any;
 
-      // Context path + route path + extension
-      return (
-        <Route
-          key={routePath}
-          exact
-          path={'(.*)' + routePath + '(.' + extension + ')?'}
-          render={routeProps => {
-            return <WrappedComponent {...this.props} {...routeProps} />;
-          }}
-        />
-      );
-    }
-  };
+        render() {
+            let routePath = this.props.cqPath;
+            if (!routePath) {
+                // @ts-ignore
+                return <WrappedComponent {...this.props} />;
+            }
+
+            extension = extension || 'html';
+
+            // Context path + route path + extension
+            return (
+                <Route
+                    key={routePath}
+                    exact
+                    path={'(.*)' + routePath + '(.' + extension + ')?'}
+                    render={routeProps => {
+                        // @ts-ignore
+                        return <WrappedComponent {...this.props} {...routeProps} />;
+                    }}
+                />
+            );
+        }
+    };
 };

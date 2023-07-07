@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import wkndLogoDark from '../../media/wknd-logo-dk.png';
 import backIcon from '../../media/icon-back.svg';
 import {MapTo} from '@adobe/aem-react-editable-components';
+// @ts-ignore
 import { withRouter } from "react-router";
 import {Link} from "react-router-dom";
 import Navigation from '../Navigation/Navigation';
@@ -12,14 +13,17 @@ export const HeaderEditConfig = {
 
     emptyLabel: 'Header',
 
-    isEmpty: function(props) {
+    isEmpty: function(props:any) {
         return !props || !props.items || props.items.length < 1;
     }
 };
 
 export default class Header extends Component {
 
-    constructor(props) {
+    goBack:any;
+    props:any;
+
+    constructor(props:any) {
         super(props);
         this.state = {isMenuOpen: false};
         this.handleMenuClick = this.handleMenuClick.bind(this);
@@ -29,6 +33,7 @@ export default class Header extends Component {
     /* Update the state when the menu is clicked */
     handleMenuClick() {
         this.setState(state => ({
+            // @ts-ignore
             isMenuOpen: !state.isMenuOpen
         }));
     }
@@ -36,6 +41,7 @@ export default class Header extends Component {
     /* Render the menu toggle */
     get menuToggle() {
         return (
+            // @ts-ignore
             <button className="Menu-toggle"  aria-expanded={this.state.isMenuOpen} title="Toggle Menu" onClick={this.handleMenuClick} >
                 <span></span>
                 <span></span>
@@ -56,15 +62,15 @@ export default class Header extends Component {
             return null;
         }
         return (<button className="Backbutton" aria-label="Return to previous page" onClick={this.goBack}>
-                    <img className="Backbutton-icon" src={backIcon} alt="Return" />
-                </button>
+                <img className="Backbutton-icon" src={backIcon} alt="Return" />
+            </button>
         );
     }
 
     get homeLink() {
-         //expect a single root defined as part of the navigation
+        //expect a single root defined as part of the navigation
         if(!this.props.items || this.props.items.length !== 1) {
-        return null;
+            return null;
         }
 
         return this.props.items[0].url;
@@ -80,8 +86,8 @@ export default class Header extends Component {
         let logo;
         if(homeLink) {
             logo = (<Link className="Logo-link"  to={this.homeLink}>
-                        <img className="Logo-img" src={wkndLogoDark} alt="WKND SPA" />
-                    </Link>);
+                <img className="Logo-img" src={wkndLogoDark} alt="WKND SPA" />
+            </Link>);
         } else {
             logo = <img className="Logo-img" src={wkndLogoDark} alt="WKND SPA" />
         }
@@ -98,7 +104,9 @@ export default class Header extends Component {
             return null;
         }
 
-         return (
+
+        return (
+            // @ts-ignore
             <header className={this.state.isMenuOpen ? 'Header Header--menuOpen' : 'Header'}>
                 <div className="Header-container">
                     {this.menuToggle}
